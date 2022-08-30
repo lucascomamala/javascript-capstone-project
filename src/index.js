@@ -9,6 +9,7 @@ const actors = generateActors();
 const actresses = generateActresses();
 
 renderNav();
+addNavListeners();
 
 console.log('x: ', shows);
 console.log('y: ', actors);

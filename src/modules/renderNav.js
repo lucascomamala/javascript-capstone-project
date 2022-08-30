@@ -19,8 +19,16 @@ const header = `
 </header>
 `;
 
+const footer = `
+<footer>
+<p>
+Created by Lucas Comamala and Carlos Molina under CC license
+</footer>
+`;
+
 const renderNav = () => {
   content.insertAdjacentHTML('afterbegin', header);
+  content.insertAdjacentHTML('beforeend', footer);
 };
 
 export default renderNav;
