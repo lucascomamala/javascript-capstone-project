@@ -7,6 +7,6 @@ const shows = generateShows();
 const actors = generateActors();
 const actresses = generateActresses();
 
-console.log("x: ", shows);
-console.log("y: ", actors);
-console.log("z: ", actresses);
+// console.log('x: ', shows);
+// console.log('y: ', actors);
+// console.log('z: ', actresses);
