@@ -26,9 +26,28 @@ Created by Lucas Comamala and Carlos Molina under CC license
 </footer>
 `;
 
-const renderNav = () => {
+const render = () => {
   content.insertAdjacentHTML('afterbegin', header);
   content.insertAdjacentHTML('beforeend', footer);
 };
 
+const listeners = () => {
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      navLinks.forEach((link) => {
+        link.classList.remove('active');
+      });
+      link.classList.add('active');
+    });
+  });
+};
+
+export const renderNav = () => {
+  render();
+  listeners();
+};
+
 export default renderNav;
+

@@ -2,7 +2,7 @@ import './style.css';
 import generateShows from './modules/shows.js';
 import generateActors from './modules/actors.js';
 import generateActresses from './modules/actresses.js';
-import renderNav from './modules/renderNav.js';
+import renderNav from './modules/nav.js';
 
 const shows = generateShows();
 const actors = generateActors();
