@@ -4,6 +4,6 @@ const makeAPICall = async (requestURL) => {
   const scoresText = await response.text();
   const result = await JSON.parse(scoresText);
   return result;
-}
+};
 
 export default makeAPICall;
