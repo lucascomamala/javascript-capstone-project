@@ -14,7 +14,7 @@ const showsSection = (shows) => {
             <span>X LIKES</span>
           </div>
         </div>
-        <button class="comments-btn" onClick="">Comments</button>`;
+        <button id="${shows[i].id}" class="modal-btn shows-modal" onClick="">Comments</button>`;
     section.appendChild(card);
   }
   return section.outerHTML;
@@ -34,7 +34,7 @@ const actorsSection = (actors) => {
             <span>X LIKES</span>
           </div>
         </div>
-        <button class="comments-btn" onClick="">Comments</button>`;
+        <button id="${actors[i].id}" class="modal-btn actors-modal">Comments</button>`;
     section.appendChild(card);
   }
   return section.outerHTML;
@@ -54,7 +54,7 @@ const actorasSection = (actoras) => {
             <span>X LIKES</span>
           </div>
         </div>
-        <button class="comments-btn" onClick="">Comments</button>`;
+        <button id="${actoras[i].id}" class="modal-btn actoras-modal" onClick="">Comments</button>`;
     section.appendChild(card);
   }
   return section.outerHTML;
@@ -78,11 +78,33 @@ const heartsListeners = () => {
   });
 }
 
+const modalListeners = (shows, actors, actoras) => {
+  const modalBtns = document.querySelectorAll('.modal-btn');
+  modalBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      if (e.target.classList.contains('shows-modal')) {
+        createPopup(e.target.id, shows, false)
+      }
+      else if (e.target.classList.contains('actors-modal')) {
+        createPopup(e.target.id, actors, true)
+      }
+      else if (e.target.classList.contains('actoras-modal')) {
+        createPopup(e.target.id, actoras, true)
+      }
+    });
+  });
+};
+
+const createPopup = (id, array, persona) => {
+  console.log(id, array, persona);
+}
+
 const renderHome = (shows, actors, actoras) => {
   content.insertAdjacentHTML('beforeend', showsSection(shows));
   content.insertAdjacentHTML('beforeend', actorsSection(actors));
   content.insertAdjacentHTML('beforeend', actorasSection(actoras));
   heartsListeners();
+  modalListeners(shows, actors, actoras);
 }
 
 export default renderHome;
