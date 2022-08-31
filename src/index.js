@@ -11,11 +11,15 @@ const createPage = async () => {
   const actors = people.filter((person) => person.gender === "Male" && person.birthday !== null).slice(0, 25);
   const actoras = people.filter((person) => person.gender === "Female" && person.birthday !== null).slice(0, 25);
 
+  const showsSelected = shows.sort(() => 0.5 - Math.random()).slice(0, 9);
+  const actorsSelected = actors.sort(() => 0.5 - Math.random()).slice(0, 9);
+  const actorasSelected = actoras.sort(() => 0.5 - Math.random()).slice(0, 9);
+
   renderHome();
 
-  console.log('x: ', shows);
-  console.log('y: ', actors);
-  console.log('z: ', actoras);
+  console.log('x: ', showsSelected);
+  console.log('y: ', actorsSelected);
+  console.log('z: ', actorasSelected);
 }
 
 createPage();
