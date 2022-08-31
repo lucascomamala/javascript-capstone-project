@@ -4,3 +4,59 @@
   margin: 0;
   padding: 0;
 }
+
+section {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 70px;
+}
+
+section#shows {
+  background-color: grey;
+}
+
+section#actors {
+  background-color: rgb(185, 44, 138);
+  display: none;
+}
+
+section#actoras {
+  background-color: rgb(24, 179, 50);
+  display: none;
+}
+
+.show-card,
+.actor-card,
+.actora-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
+.likes-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-heart {
+  color: red;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.likes-container > span {
+  font-size: 10px;
+}
