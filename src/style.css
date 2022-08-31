@@ -17,12 +17,10 @@ section#shows {
 
 section#actors {
   background-color: rgb(185, 44, 138);
-  display: none;
 }
 
 section#actoras {
   background-color: rgb(24, 179, 50);
-  display: none;
 }
 
 .show-card,
@@ -40,6 +38,7 @@ section#actoras {
 .card-title {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .likes-container {

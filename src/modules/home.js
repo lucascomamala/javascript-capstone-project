@@ -3,322 +3,67 @@ const content = document.querySelector('main');
 const showsSection = (shows) => {
   const section = document.createElement('section');
   section.id = 'shows';
-  section.innerHTML = `<div class="show-card">
-        <img class="card-img" src="SHOWIMGSRC" alt="SHOWIMGALT">
+  for (let i = 0; i < shows.length; i++) {
+    const card = document.createElement('div');
+    card.classList.add('actor-card');
+    card.innerHTML = `<img class="card-img" src="${shows[i].image.medium}" alt="${shows[i].name} poster image">
         <div class="card-title">
-          <h3>SHOWTITLE</h3>
+          <h3>${shows[i].name}</h3>
           <div class="likes-container">
             <i class="fa-solid fa-heart"></i>
             <span>X LIKES</span>
           </div>
         </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="show-card">
-        <img class="card-img" src="SHOWIMGSRC" alt="SHOWIMGALT">
-        <div class="card-title">
-          <h3>SHOWTITLE</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="show-card">
-        <img class="card-img" src="SHOWIMGSRC" alt="SHOWIMGALT">
-        <div class="card-title">
-          <h3>SHOWTITLE</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="show-card">
-        <img class="card-img" src="SHOWIMGSRC" alt="SHOWIMGALT">
-        <div class="card-title">
-          <h3>SHOWTITLE</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="show-card">
-        <img class="card-img" src="SHOWIMGSRC" alt="SHOWIMGALT">
-        <div class="card-title">
-          <h3>SHOWTITLE</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="show-card">
-        <img class="card-img" src="SHOWIMGSRC" alt="SHOWIMGALT">
-        <div class="card-title">
-          <h3>SHOWTITLE</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="show-card">
-        <img class="card-img" src="SHOWIMGSRC" alt="SHOWIMGALT">
-        <div class="card-title">
-          <h3>SHOWTITLE</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="show-card">
-        <img class="card-img" src="SHOWIMGSRC" alt="SHOWIMGALT">
-        <div class="card-title">
-          <h3>SHOWTITLE</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="show-card">
-        <img class="card-img" src="SHOWIMGSRC" alt="SHOWIMGALT">
-        <div class="card-title">
-          <h3>SHOWTITLE</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>`;
+        <button class="comments-btn" onClick="">Comments</button>`;
+    section.appendChild(card);
+  }
   return section.outerHTML;
 }
 
-const actorsSection = (shows) => {
+const actorsSection = (actors) => {
   const section = document.createElement('section');
   section.id = 'actors';
-  section.innerHTML = `<div class="actor-card">
-        <img class="card-img" src="ACTORIMGSRC" alt="ACTORIMGALT">
+  for (let i = 0; i < actors.length; i++) {
+    const card = document.createElement('div');
+    card.classList.add('actora-card');
+    card.innerHTML = `<img class="card-img" src="${actors[i].image.medium}" alt="${actors[i].name} poster image">
         <div class="card-title">
-          <h3>ACTORNAME</h3>
+          <h3>${actors[i].name}</h3>
           <div class="likes-container">
             <i class="fa-solid fa-heart"></i>
             <span>X LIKES</span>
           </div>
         </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actor-card">
-        <img class="card-img" src="ACTORIMGSRC" alt="ACTORIMGALT">
-        <div class="card-title">
-          <h3>ACTORNAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actor-card">
-        <img class="card-img" src="ACTORIMGSRC" alt="ACTORIMGALT">
-        <div class="card-title">
-          <h3>ACTORNAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actor-card">
-        <img class="card-img" src="ACTORIMGSRC" alt="ACTORIMGALT">
-        <div class="card-title">
-          <h3>ACTORNAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actor-card">
-        <img class="card-img" src="ACTORIMGSRC" alt="ACTORIMGALT">
-        <div class="card-title">
-          <h3>ACTORNAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actor-card">
-        <img class="card-img" src="ACTORIMGSRC" alt="ACTORIMGALT">
-        <div class="card-title">
-          <h3>ACTORNAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actor-card">
-        <img class="card-img" src="ACTORIMGSRC" alt="ACTORIMGALT">
-        <div class="card-title">
-          <h3>ACTORNAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actor-card">
-        <img class="card-img" src="ACTORIMGSRC" alt="ACTORIMGALT">
-        <div class="card-title">
-          <h3>ACTORNAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actor-card">
-        <img class="card-img" src="ACTORIMGSRC" alt="ACTORIMGALT">
-        <div class="card-title">
-          <h3>ACTORNAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>`;
+        <button class="comments-btn" onClick="">Comments</button>`;
+    section.appendChild(card);
+  }
   return section.outerHTML;
 }
 
-const actorasSection = (shows) => {
+const actorasSection = (actoras) => {
   const section = document.createElement('section');
   section.id = 'actoras';
-  section.innerHTML = `<div class="actora-card">
-        <img class="card-img" src="ACTORAIMGSRC" alt="ACTORAIMGALT">
+  for (let i = 0; i < actoras.length; i++) {
+    const card = document.createElement('div');
+    card.classList.add('show-card');
+    card.innerHTML = `<img class="card-img" src="${actoras[i].image.medium}" alt="${actoras[i].name} poster image">
         <div class="card-title">
-          <h3>ACTORANAME</h3>
+          <h3>${actoras[i].name}</h3>
           <div class="likes-container">
             <i class="fa-solid fa-heart"></i>
             <span>X LIKES</span>
           </div>
         </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actora-card">
-        <img class="card-img" src="ACTORAIMGSRC" alt="ACTORAIMGALT">
-        <div class="card-title">
-          <h3>ACTORANAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actora-card">
-        <img class="card-img" src="ACTORAIMGSRC" alt="ACTORAIMGALT">
-        <div class="card-title">
-          <h3>ACTORANAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actora-card">
-        <img class="card-img" src="ACTORAIMGSRC" alt="ACTORAIMGALT">
-        <div class="card-title">
-          <h3>ACTORANAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actora-card">
-        <img class="card-img" src="ACTORAIMGSRC" alt="ACTORAIMGALT">
-        <div class="card-title">
-          <h3>ACTORANAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actora-card">
-        <img class="card-img" src="ACTORAIMGSRC" alt="ACTORAIMGALT">
-        <div class="card-title">
-          <h3>ACTORANAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actora-card">
-        <img class="card-img" src="ACTORAIMGSRC" alt="ACTORAIMGALT">
-        <div class="card-title">
-          <h3>ACTORANAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actora-card">
-        <img class="card-img" src="ACTORAIMGSRC" alt="ACTORAIMGALT">
-        <div class="card-title">
-          <h3>ACTORANAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>
-      <div class="actora-card">
-        <img class="card-img" src="ACTORAIMGSRC" alt="ACTORAIMGALT">
-        <div class="card-title">
-          <h3>ACTORANAME</h3>
-          <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
-            <span>X LIKES</span>
-          </div>
-        </div>
-        <button class="comments-btn" onClick="">Comments</button>
-      </div>`;
+        <button class="comments-btn" onClick="">Comments</button>`;
+    section.appendChild(card);
+  }
   return section.outerHTML;
 }
 
 const renderHome = (shows, actors, actoras) => {
-  content.insertAdjacentHTML('beforeend', showsSection());
-  content.insertAdjacentHTML('beforeend', actorsSection());
-  content.insertAdjacentHTML('beforeend', actorasSection());
+  content.insertAdjacentHTML('beforeend', showsSection(shows));
+  content.insertAdjacentHTML('beforeend', actorsSection(actors));
+  content.insertAdjacentHTML('beforeend', actorasSection(actoras));
 }
 
 export default renderHome;
