@@ -1,5 +1,6 @@
 import './style.css';
 import renderHome from './modules/home.js';
+import renderNav from './modules/nav.js';
 import generateShows from './modules/shows.js';
 import generatePeople from './modules/people.js';
 
@@ -15,6 +16,7 @@ const createPage = async () => {
   const actorasSelected = actoras.sort(() => 0.5 - Math.random()).slice(0, 9);
 
   renderHome(showsSelected, actorsSelected, actorasSelected);
+  renderNav();
 
   console.log('x: ', showsSelected);
   console.log('y: ', actorsSelected);
