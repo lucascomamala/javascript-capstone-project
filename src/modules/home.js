@@ -66,7 +66,6 @@ const heartsListeners = () => {
     heart.addEventListener('mouseover', () => {
       heart.classList.remove('fa-regular');
       heart.classList.add('fa-solid');
-
     });
   });
   hearts.forEach((heart) => {
@@ -86,11 +85,11 @@ const modalListeners = (shows, actors, actoras) => {
   modalBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       if (e.target.classList.contains('shows-modal')) {
-        createPopup(e.target.id, shows, false)
+        createPopup(e.target.id, shows, false);
       } else if (e.target.classList.contains('actors-modal')) {
-        createPopup(e.target.id, actors, true)
+        createPopup(e.target.id, actors, true);
       } else if (e.target.classList.contains('actoras-modal')) {
-        createPopup(e.target.id, actoras, true)
+        createPopup(e.target.id, actoras, true);
       }
     });
   });
