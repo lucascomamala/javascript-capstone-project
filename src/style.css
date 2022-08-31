@@ -38,7 +38,9 @@ section#actoras {
 .card-title {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.5rem 0;
 }
 
 .likes-container {
@@ -49,4 +51,10 @@ section#actoras {
 .fa-heart {
   color: red;
   text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.likes-container > span {
+  font-size: 10px;
 }

@@ -10,7 +10,7 @@ const showsSection = (shows) => {
         <div class="card-title">
           <h3>${shows[i].name}</h3>
           <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
+            <i class="fa-regular fa-heart"></i>
             <span>X LIKES</span>
           </div>
         </div>
@@ -30,7 +30,7 @@ const actorsSection = (actors) => {
         <div class="card-title">
           <h3>${actors[i].name}</h3>
           <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
+            <i class="fa-regular fa-heart"></i>
             <span>X LIKES</span>
           </div>
         </div>
@@ -50,7 +50,7 @@ const actorasSection = (actoras) => {
         <div class="card-title">
           <h3>${actoras[i].name}</h3>
           <div class="likes-container">
-            <i class="fa-solid fa-heart"></i>
+            <i class="fa-regular fa-heart"></i>
             <span>X LIKES</span>
           </div>
         </div>
@@ -60,10 +60,29 @@ const actorasSection = (actoras) => {
   return section.outerHTML;
 }
 
+const heartsListeners = () => {
+  const hearts = document.querySelectorAll('.fa-heart');
+  hearts.forEach((heart) => {
+    heart.addEventListener('mouseover', (e) => {
+      heart.classList.remove('fa-regular');
+      heart.classList.add('fa-solid');
+
+    });
+  });
+  hearts.forEach((heart) => {
+    heart.addEventListener('mouseout', (e) => {
+      heart.classList.add('fa-regular');
+      heart.classList.remove('fa-solid');
+
+    });
+  });
+}
+
 const renderHome = (shows, actors, actoras) => {
   content.insertAdjacentHTML('beforeend', showsSection(shows));
   content.insertAdjacentHTML('beforeend', actorsSection(actors));
   content.insertAdjacentHTML('beforeend', actorasSection(actoras));
+  heartsListeners();
 }
 
 export default renderHome;
