@@ -56,7 +56,7 @@ const listeners = () => {
   });
 };
 
-export const renderNav = () => {
+const renderNav = () => {
   render();
   listeners();
 };
