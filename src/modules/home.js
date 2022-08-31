@@ -5,7 +5,7 @@ const showsSection = (shows) => {
   section.id = 'shows';
   for (let i = 0; i < shows.length; i += 1) {
     const card = document.createElement('div');
-    card.classList.add('actor-card');
+    card.classList.add('show-card');
     card.innerHTML = `<img class="card-img" src="${shows[i].image.medium}" alt="${shows[i].name} poster image">
         <div class="card-title">
           <h3>${shows[i].name}</h3>
@@ -25,7 +25,7 @@ const actorsSection = (actors) => {
   section.id = 'actors';
   for (let i = 0; i < actors.length; i += 1) {
     const card = document.createElement('div');
-    card.classList.add('actora-card');
+    card.classList.add('actor-card');
     card.innerHTML = `<img class="card-img" src="${actors[i].image.medium}" alt="${actors[i].name} poster image">
         <div class="card-title">
           <h3>${actors[i].name}</h3>
@@ -45,7 +45,7 @@ const actorasSection = (actoras) => {
   section.id = 'actoras';
   for (let i = 0; i < actoras.length; i += 1) {
     const card = document.createElement('div');
-    card.classList.add('show-card');
+    card.classList.add('actora-card');
     card.innerHTML = `<img class="card-img" src="${actoras[i].image.medium}" alt="${actoras[i].name} poster image">
         <div class="card-title">
           <h3>${actoras[i].name}</h3>
