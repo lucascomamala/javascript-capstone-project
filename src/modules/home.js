@@ -3,7 +3,7 @@ const content = document.querySelector('main');
 const showsSection = (shows) => {
   const section = document.createElement('section');
   section.id = 'shows';
-  for (let i = 0; i < shows.length; i++) {
+  for (let i = 0; i < shows.length; i += 1) {
     const card = document.createElement('div');
     card.classList.add('actor-card');
     card.innerHTML = `<img class="card-img" src="${shows[i].image.medium}" alt="${shows[i].name} poster image">
@@ -18,12 +18,12 @@ const showsSection = (shows) => {
     section.appendChild(card);
   }
   return section.outerHTML;
-}
+};
 
 const actorsSection = (actors) => {
   const section = document.createElement('section');
   section.id = 'actors';
-  for (let i = 0; i < actors.length; i++) {
+  for (let i = 0; i < actors.length; i += 1) {
     const card = document.createElement('div');
     card.classList.add('actora-card');
     card.innerHTML = `<img class="card-img" src="${actors[i].image.medium}" alt="${actors[i].name} poster image">
@@ -38,12 +38,12 @@ const actorsSection = (actors) => {
     section.appendChild(card);
   }
   return section.outerHTML;
-}
+};
 
 const actorasSection = (actoras) => {
   const section = document.createElement('section');
   section.id = 'actoras';
-  for (let i = 0; i < actoras.length; i++) {
+  for (let i = 0; i < actoras.length; i += 1) {
     const card = document.createElement('div');
     card.classList.add('show-card');
     card.innerHTML = `<img class="card-img" src="${actoras[i].image.medium}" alt="${actoras[i].name} poster image">
@@ -58,25 +58,28 @@ const actorasSection = (actoras) => {
     section.appendChild(card);
   }
   return section.outerHTML;
-}
+};
 
 const heartsListeners = () => {
   const hearts = document.querySelectorAll('.fa-heart');
   hearts.forEach((heart) => {
-    heart.addEventListener('mouseover', (e) => {
+    heart.addEventListener('mouseover', () => {
       heart.classList.remove('fa-regular');
       heart.classList.add('fa-solid');
 
     });
   });
   hearts.forEach((heart) => {
-    heart.addEventListener('mouseout', (e) => {
+    heart.addEventListener('mouseout', () => {
       heart.classList.add('fa-regular');
       heart.classList.remove('fa-solid');
-
     });
   });
-}
+};
+
+const createPopup = (id, array, persona) => {
+  console.log(id, array, persona);
+};
 
 const modalListeners = (shows, actors, actoras) => {
   const modalBtns = document.querySelectorAll('.modal-btn');
@@ -84,20 +87,14 @@ const modalListeners = (shows, actors, actoras) => {
     btn.addEventListener('click', (e) => {
       if (e.target.classList.contains('shows-modal')) {
         createPopup(e.target.id, shows, false)
-      }
-      else if (e.target.classList.contains('actors-modal')) {
+      } else if (e.target.classList.contains('actors-modal')) {
         createPopup(e.target.id, actors, true)
-      }
-      else if (e.target.classList.contains('actoras-modal')) {
+      } else if (e.target.classList.contains('actoras-modal')) {
         createPopup(e.target.id, actoras, true)
       }
     });
   });
 };
-
-const createPopup = (id, array, persona) => {
-  console.log(id, array, persona);
-}
 
 const renderHome = (shows, actors, actoras) => {
   content.insertAdjacentHTML('beforeend', showsSection(shows));
@@ -105,6 +102,6 @@ const renderHome = (shows, actors, actoras) => {
   content.insertAdjacentHTML('beforeend', actorasSection(actoras));
   heartsListeners();
   modalListeners(shows, actors, actoras);
-}
+};
 
 export default renderHome;
