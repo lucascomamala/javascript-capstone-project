@@ -1,8 +1,7 @@
 const makeAPICall = async (requestURL) => {
-  const request = new Request(requestURL);
-  const response = await fetch(request);
-  const scoresText = await response.text();
-  const result = await JSON.parse(scoresText);
+  const result = fetch(requestURL)
+    .then(response => response.json())
+    .then(json => json);
   return result;
 };
 
