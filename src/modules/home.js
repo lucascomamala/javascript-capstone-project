@@ -1,3 +1,5 @@
+import makeAPICall from './makeAPICall.js';
+
 const content = document.querySelector('main');
 
 const showsSection = (shows) => {
@@ -11,7 +13,7 @@ const showsSection = (shows) => {
           <h3>${shows[i].name}</h3>
           <div class="likes-container">
             <i class="fa-regular fa-heart"></i>
-            <span>X LIKES</span>
+            <span id="show${shows[i].id}" class="likes-num">LIKES</span>
           </div>
         </div>
         <button id="${shows[i].id}" class="modal-btn shows-modal" onClick="">Comments</button>`;
@@ -31,7 +33,7 @@ const actorsSection = (actors) => {
           <h3>${actors[i].name}</h3>
           <div class="likes-container">
             <i class="fa-regular fa-heart"></i>
-            <span>X LIKES</span>
+            <span id="person${actors[i].id}" class="likes-num">LIKES</span>
           </div>
         </div>
         <button id="${actors[i].id}" class="modal-btn actors-modal">Comments</button>`;
@@ -51,7 +53,7 @@ const actorasSection = (actoras) => {
           <h3>${actoras[i].name}</h3>
           <div class="likes-container">
             <i class="fa-regular fa-heart"></i>
-            <span>X LIKES</span>
+            <span id="person${actoras[i].id}" class="likes-num">LIKES</span>
           </div>
         </div>
         <button id="${actoras[i].id}" class="modal-btn actoras-modal" onClick="">Comments</button>`;
@@ -59,6 +61,29 @@ const actorasSection = (actoras) => {
   }
   return section.outerHTML;
 };
+
+const displayLikes = (id, type) => {
+  const numbers = document.querySelectorAll('.likes-num');
+  getLikes().then((likes) => {
+    numbers.forEach((num) => {
+      console.log(likes)
+      let item = likes.find((like) => like.item_id === num.id);
+      
+      if(item) {
+        num.innerHTML = `${item.likes} likes`; ;
+      } else {
+        num.innerHTML = `0 likes`;
+      }
+    });
+    num.innerHTML = 'X LIKES';
+  });
+}
+
+const getLikes = async () => {
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/likes';
+  return await makeAPICall(url);
+  // return x;
+}
 
 const heartsListeners = () => {
   const hearts = document.querySelectorAll('.fa-heart');
@@ -101,6 +126,7 @@ const renderHome = (shows, actors, actoras) => {
   content.insertAdjacentHTML('beforeend', actorasSection(actoras));
   heartsListeners();
   modalListeners(shows, actors, actoras);
+  displayLikes();
 };
 
 export default renderHome;
