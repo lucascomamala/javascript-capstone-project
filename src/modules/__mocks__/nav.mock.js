@@ -1,7 +1,7 @@
 const mockNav = () => {
   const content = document.createElement('section');
   content.id = 'shows';
-  for (let i = 0; i < 9; i += 1) {
+  for (let i = 0; i < 3; i += 1) {
     const counter = document.createElement('div');
     counter.classList.add('card-counter');
     document.body.appendChild(counter);
