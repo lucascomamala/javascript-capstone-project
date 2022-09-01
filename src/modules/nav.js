@@ -48,7 +48,7 @@ const getCount = (section) => {
   return content.childElementCount;
 };
 
-const displayCount = (section) => {
+export const displayCount = (section) => {
   const counters = document.querySelectorAll('.card-counter');
   const count = getCount(section);
   switch (section) {
