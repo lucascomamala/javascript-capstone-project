@@ -1,3 +1,5 @@
+import { createPopup } from './popups.js';
+
 const content = document.querySelector('main');
 
 const showsSection = (shows) => {
@@ -76,9 +78,9 @@ const heartsListeners = () => {
   });
 };
 
-const createPopup = (id, array, persona) => {
-  console.log(id, array, persona);
-};
+// const createPopup = (id, array, persona) => {
+//   console.log(id, array, persona);
+// };
 
 const modalListeners = (shows, actors, actoras) => {
   const modalBtns = document.querySelectorAll('.modal-btn');
