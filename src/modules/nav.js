@@ -45,7 +45,30 @@ const getCount = (section) => {
       break;
   }
   return content.childElementCount;
-}
+};
+
+const displayCount = (section) => {
+  const counters = document.querySelectorAll('.card-counter');
+  const count = getCount(section);
+  switch (section) {
+    case 0:
+      counters[0].style.display = 'inline';
+      counters[1].style.display = 'none';
+      counters[2].style.display = 'none';
+      break;
+    case 1:
+      counters[0].style.display = 'none';
+      counters[1].style.display = 'inline';
+      counters[2].style.display = 'none';
+      break;
+    case 2:
+      counters[0].style.display = 'none';
+      counters[1].style.display = 'none';
+      counters[2].style.display = 'inline';
+      break;
+  }
+  counters[section].innerHTML = `(${count})`;
+};
 
 const listeners = () => {
   const showsSection = document.getElementById('shows');
@@ -55,40 +78,31 @@ const listeners = () => {
   const counters = document.querySelectorAll('.card-counter');
 
   navLinks[0].addEventListener('click', (e) => {
-    const count = getCount(0);
     showsSection.style.display = 'grid';
     actorsSection.style.display = 'none';
     actorasSection.style.display = 'none';
-    counters[0].style.display = 'inline';
-    counters[1].style.display = 'none';
-    counters[2].style.display = 'none';
-    counters[0].innerHTML = `(${count})`;
+    displayCount(0);
   });
 
   navLinks[1].addEventListener('click', (e) => {
-    const count = getCount(1);
     showsSection.style.display = 'none';
     actorsSection.style.display = 'grid';
     actorasSection.style.display = 'none';
-    counters[0].style.display = 'none';
-    counters[1].style.display = 'inline';
-    counters[2].style.display = 'none';
+    displayCount(1);
   });
 
   navLinks[2].addEventListener('click', (e) => {
-    const count = getCount(2);
     showsSection.style.display = 'none';
     actorsSection.style.display = 'none';
     actorasSection.style.display = 'grid';
-    counters[0].style.display = 'none';
-    counters[1].style.display = 'none';
-    counters[2].style.display = 'inline';
+    displayCount(2);
   });
 };
 
 const renderNav = () => {
   render();
   listeners();
+  displayCount(0);
 };
 
 export default renderNav;
