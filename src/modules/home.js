@@ -67,30 +67,32 @@ const displayLikes = () => {
   const numbers = document.querySelectorAll('.likes-num');
   getLikes().then((likes) => {
     numbers.forEach((num) => {
-      let item = likes.find((like) => like.item_id === num.id);
+      const item = likes.find((like) => like.item_id === num.id);
 
       if (item) {
-        num.innerHTML = `${item.likes} likes`;;
+        num.innerHTML = `${item.likes} likes`;
       } else {
-        num.innerHTML = `0 likes`;
+        num.innerHTML = '0 likes';
       }
     });
   });
-}
+};
 
 const getLikes = async () => {
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/likes';
-  return await makeAPICall(url);
-}
+  return makeAPICall(url);
+};
 
 const addLike = async (id) => {
-  const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/likes`;
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/likes';
   const data = {
     item_id: id,
   };
   await makeAPIPost(url, data)
-    .then(() => {displayLikes()});
-}
+    .then(() => {
+      displayLikes();
+    });
+};
 
 const heartsListeners = () => {
   const hearts = document.querySelectorAll('.fa-heart');
@@ -114,7 +116,6 @@ const heartsListeners = () => {
       heart.classList.add('fa-solid');
       const id = e.target.nextSibling.nextSibling.id;
       addLike(id);
-
     });
   });
 };
