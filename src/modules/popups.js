@@ -41,13 +41,15 @@ const popupSectionShows = (shows) => {
       <img src="${shows[0].image.original}" alt="Penny Dreadful">
     </div>
     <div class="pop-description">
-      <h1>${shows[0].name}</h1><br>
-      <label>Genre: <b>${shows[0].genres}</b></label><br><br>
-      <label><b>Summary:</b></label>
-      ${shows[0].summary}<br>
-      <label>Language: <b>${shows[0].language}</b></label><br><br>
-      <label>Premiered: <b>${shows[0].premiered}</b></label><br><br>
-      <label>Rating: <b>${shows[0].rating.average}</b></label>
+      <h1>${shows[0].name}</h1>
+      <p>Genre: <b>${shows[0].genres}</b></p>
+      <div class="pop-summary">
+        <p><b>Summary:</b></p>
+        ${shows[0].summary}
+      </div>  
+      <p>Language: <b>${shows[0].language}</b></p>
+      <p>Premiered: <b>${shows[0].premiered}</b></p>
+      <p>Rating: <b>${shows[0].rating.average}</b></p>
     </div>        
   </div>`;
   content.insertAdjacentHTML('afterbegin', section.outerHTML);
@@ -66,11 +68,11 @@ const popupSectionActors = (actors) => {
       <img src="${actors[0].image.original}" alt="Penny Dreadful">
     </div>
     <div class="pop-description">
-      <h1>${actors[0].name}</h1><br>
-      <label>Country: <b>${actors[0].country.name}</b></label><br><br>
-      <label>Birthday: </label><b>${actors[0].birthday}</b><br><br>
-      <label>Gender: <b>${actors[0].gender}</b></label><br><br>
-      <label><a href="${actors[0].url}">Click for more details</a></label> 
+      <h1>${actors[0].name}</h1>
+      <p>Country: <b>${actors[0].country.name}</b></p>
+      <p>Birthday: </p><b>${actors[0].birthday}</b>
+      <p>Gender: <b>${actors[0].gender}</b></p>
+      <p><a href="${actors[0].url}">Click for more details</a></p> 
     </div>      
   </div>`;
   content.insertAdjacentHTML('afterbegin', section.outerHTML);
@@ -80,14 +82,6 @@ const createPopup = (id, array, person) => {
   // eslint-disable-next-line prefer-arrow-callback, func-names
   const myArray = array.filter(function (arr) { return arr.id === parseInt(id, 10); });
 
-  // const myArray = array.filter. (arr) => {return arr.id == parseInt(id) } ;
-
-  // const myArray = array.filter( arr  => arr.id === parseInt(id, 10) );
-
-  // family.filter(person => person.age > 18);
-  // const myArray = array.filter(function (arr) { return arr.id == parseInt(id); });
-
-  // var result = numbers.filter(number => number > 5);
   if (myArray.length !== 1) return;
   if (person) {
     popupSectionActors(myArray);
