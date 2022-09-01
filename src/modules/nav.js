@@ -43,6 +43,7 @@ const getCount = (section) => {
     case 2:
       content = document.getElementById('actoras');
       break;
+    default:
   }
   return content.childElementCount;
 };
@@ -66,6 +67,7 @@ const displayCount = (section) => {
       counters[1].style.display = 'none';
       counters[2].style.display = 'inline';
       break;
+    default:
   }
   counters[section].innerHTML = `(${count})`;
 };
@@ -75,23 +77,22 @@ const listeners = () => {
   const actorsSection = document.getElementById('actors');
   const actorasSection = document.getElementById('actoras');
   const navLinks = document.querySelectorAll('.nav-link');
-  const counters = document.querySelectorAll('.card-counter');
 
-  navLinks[0].addEventListener('click', (e) => {
+  navLinks[0].addEventListener('click', () => {
     showsSection.style.display = 'grid';
     actorsSection.style.display = 'none';
     actorasSection.style.display = 'none';
     displayCount(0);
   });
 
-  navLinks[1].addEventListener('click', (e) => {
+  navLinks[1].addEventListener('click', () => {
     showsSection.style.display = 'none';
     actorsSection.style.display = 'grid';
     actorasSection.style.display = 'none';
     displayCount(1);
   });
 
-  navLinks[2].addEventListener('click', (e) => {
+  navLinks[2].addEventListener('click', () => {
     showsSection.style.display = 'none';
     actorsSection.style.display = 'none';
     actorasSection.style.display = 'grid';
