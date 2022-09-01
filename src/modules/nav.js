@@ -43,12 +43,14 @@ const getCount = (section) => {
     case 2:
       content = document.getElementById('actoras');
       break;
+    // Default case is for jest testing purposes only
     default:
+      content = document.querySelector('section');
   }
   return content.childElementCount;
 };
 
-const displayCount = (section) => {
+export const displayCount = (section) => {
   const counters = document.querySelectorAll('.card-counter');
   const count = getCount(section);
   switch (section) {
@@ -67,7 +69,10 @@ const displayCount = (section) => {
       counters[1].style.display = 'none';
       counters[2].style.display = 'inline';
       break;
+    // Default case is for jest testing purposes only
     default:
+      counters[0].innerHTML = `(${count})`;
+      return;
   }
   counters[section].innerHTML = `(${count})`;
 };
