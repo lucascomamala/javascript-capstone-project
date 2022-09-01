@@ -18,9 +18,9 @@ const createPage = async () => {
   renderHome(showsSelected, actorsSelected, actorasSelected);
   renderNav();
 
-  console.log('x: ', showsSelected);
-  console.log('y: ', actorsSelected);
-  console.log('z: ', actorasSelected);
+  console.log('x: ', shows);
+  console.log('y: ', actors);
+  console.log('z: ', actoras);
 };
 
 createPage();
