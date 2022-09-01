@@ -1,4 +1,4 @@
-const mockNav = () => {
+const mockNav = (x) => {
   const content = document.createElement('section');
   content.id = 'shows';
   for (let i = 0; i < 3; i += 1) {
@@ -7,7 +7,7 @@ const mockNav = () => {
     document.body.appendChild(counter);
   }
 
-  for (let i = 0; i < 9; i += 1) {
+  for (let i = 0; i < x; i += 1) {
     const child = document.createElement('div');
     child.classList.add('show');
     child.innerHTML =

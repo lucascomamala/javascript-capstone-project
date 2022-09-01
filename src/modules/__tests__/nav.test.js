@@ -5,10 +5,10 @@
 import { displayCount } from '../nav.js';
 import mockNav from '../__mocks__/nav.mock.js';
 
-test('Add 9 items and check count', () => {
-  mockNav();
+test('Add x items and check count', () => {
+  const x = 10;
+  mockNav(x);
   displayCount(0);
   const counter = document.querySelector('.card-counter').innerHTML;
-  console.log(counter);
-  expect(counter).toBe('(9)');
+  expect(counter).toBe(`(${x})`);
 });
