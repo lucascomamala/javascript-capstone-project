@@ -60,3 +60,82 @@ section#actoras {
 .likes-container > span {
   font-size: 10px;
 }
+
+#popup-section {
+  border: 1px solid black;
+  display: none;
+  padding: 2%;
+  justify-content: center;
+  align-items: center;
+  margin: 3% 10%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  width: auto;
+  height: 100%;
+  overflow: auto;
+}
+
+#popupClose {
+  text-decoration: none;
+  color: darkcyan;
+  display: block;
+  font-size: 25px;
+  width: 50px;
+  text-align: center;
+}
+
+#popupClose:hover {
+  background-color: darkcyan;
+  color: white;
+}
+
+#popup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pop-image {
+  flex: 1;
+  padding: 0 1%;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.pop-image img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: auto;
+  max-height: 80vh;
+  align-self: center;
+}
+
+.pop-description {
+  flex: 1;
+  align-self: flex-start;
+  padding: 4% 1% 0 1%;
+  font-size: 14px;
+}
+
+#popComments {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 5%;
+}
+
+#popComments ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding-top: 10px;
+  padding-inline-start: 0;
+  gap: 10px;
+}
