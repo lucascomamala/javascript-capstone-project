@@ -63,6 +63,11 @@ const actorasSection = (actoras) => {
   return section.outerHTML;
 };
 
+const getLikes = async () => {
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/likes';
+  return makeAPICall(url);
+};
+
 const displayLikes = () => {
   const numbers = document.querySelectorAll('.likes-num');
   getLikes().then((likes) => {
@@ -76,11 +81,6 @@ const displayLikes = () => {
       }
     });
   });
-};
-
-const getLikes = async () => {
-  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/likes';
-  return makeAPICall(url);
 };
 
 const addLike = async (id) => {
@@ -114,7 +114,7 @@ const heartsListeners = () => {
       if (heart.classList.contains('pressed')) return;
       heart.classList.add('pressed');
       heart.classList.add('fa-solid');
-      const id = e.target.nextSibling.nextSibling.id;
+      const { id } = e.target.nextSibling.nextSibling;
       addLike(id);
     });
   });
