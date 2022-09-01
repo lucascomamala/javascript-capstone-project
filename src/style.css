@@ -67,7 +67,7 @@ section#actoras {
   padding: 2%;
   justify-content: center;
   align-items: center;
-  margin: 3% 10%;
+  margin: 3% 10% 3% 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -75,7 +75,8 @@ section#actoras {
   right: 0;
   background-color: white;
   width: auto;
-  height: 100%;
+  height: auto;
+  max-height: 90vh;
   overflow: auto;
 }
 
@@ -121,7 +122,16 @@ section#actoras {
   flex: 1;
   align-self: flex-start;
   padding: 4% 1% 0 1%;
-  font-size: 14px;
+  font-size: 18px;
+}
+
+.pop-description h1 {
+  padding-bottom: 4%;
+}
+
+.pop-description p {
+  padding-top: 1.5%;
+  padding-bottom: 1%;
 }
 
 #popComments {
@@ -138,4 +148,39 @@ section#actoras {
   padding-top: 10px;
   padding-inline-start: 0;
   gap: 10px;
+}
+
+.pop-summary {
+  max-height: 10vw;
+  overflow-y: auto;
+  border: 1px solid rgb(226, 222, 222);
+}
+
+@media only screen and (max-width: 767px) {
+  #popup-section {
+    margin: 0 5%;
+    padding: 0 0;
+  }
+
+  #popup {
+    flex-direction: column;
+  }
+
+  .pop-description {
+    font-size: 14px;
+    margin: auto 10%;
+  }
+
+  .pop-description h1 {
+    padding-bottom: 6%;
+  }
+
+  .pop-description p {
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
+  .pop-summary {
+    max-height: 30vw;
+  }
 }
