@@ -1,4 +1,5 @@
 import makeAPICall from './makeAPICall.js';
+import makeAPIPost from './makeAPIPost.js';
 
 const content = document.querySelector('main');
 
@@ -62,27 +63,33 @@ const actorasSection = (actoras) => {
   return section.outerHTML;
 };
 
-const displayLikes = (id, type) => {
+const displayLikes = () => {
   const numbers = document.querySelectorAll('.likes-num');
   getLikes().then((likes) => {
     numbers.forEach((num) => {
-      console.log(likes)
       let item = likes.find((like) => like.item_id === num.id);
-      
-      if(item) {
-        num.innerHTML = `${item.likes} likes`; ;
+
+      if (item) {
+        num.innerHTML = `${item.likes} likes`;;
       } else {
         num.innerHTML = `0 likes`;
       }
     });
-    num.innerHTML = 'X LIKES';
   });
 }
 
 const getLikes = async () => {
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/likes';
   return await makeAPICall(url);
-  // return x;
+}
+
+const addLike = async (id) => {
+  const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/likes`;
+  const data = {
+    item_id: id,
+  };
+  await makeAPIPost(url, data)
+    .then(() => {displayLikes()});
 }
 
 const heartsListeners = () => {
@@ -95,8 +102,19 @@ const heartsListeners = () => {
   });
   hearts.forEach((heart) => {
     heart.addEventListener('mouseout', () => {
+      if (heart.classList.contains('pressed')) return;
       heart.classList.add('fa-regular');
       heart.classList.remove('fa-solid');
+    });
+  });
+  hearts.forEach((heart) => {
+    heart.addEventListener('click', (e) => {
+      if (heart.classList.contains('pressed')) return;
+      heart.classList.add('pressed');
+      heart.classList.add('fa-solid');
+      const id = e.target.nextSibling.nextSibling.id;
+      addLike(id);
+
     });
   });
 };
