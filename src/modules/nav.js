@@ -1,10 +1,12 @@
+import MyImage from '../../assets/logo.png';
+
 const content = document.querySelector('body');
 
 const header = `
 <header>
 <ul class="nav">
   <li class="nav-item">
-    <img src="" class="logo" alt="main logo" />
+    <img src="${MyImage}" class="logo" alt="main logo" />
   </li>
   <li class="nav-item">
     <a class="nav-link active" href="#">Shows</a>
@@ -41,18 +43,27 @@ const listeners = () => {
     showsSection.style.display = 'grid';
     actorsSection.style.display = 'none';
     actorasSection.style.display = 'none';
+    navLinks[0].classList.add('active');
+    navLinks[1].classList.remove('active');
+    navLinks[2].classList.remove('active');
   });
 
   navLinks[1].addEventListener('click', () => {
     showsSection.style.display = 'none';
     actorsSection.style.display = 'grid';
     actorasSection.style.display = 'none';
+    navLinks[0].classList.remove('active');
+    navLinks[1].classList.add('active');
+    navLinks[2].classList.remove('active');
   });
 
   navLinks[2].addEventListener('click', () => {
     showsSection.style.display = 'none';
     actorsSection.style.display = 'none';
     actorasSection.style.display = 'grid';
+    navLinks[0].classList.remove('active');
+    navLinks[1].classList.remove('active');
+    navLinks[2].classList.add('active');
   });
 };
 

@@ -5,22 +5,52 @@
   padding: 0;
 }
 
+.nav {
+  background-color: #fcfaf9;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.nav-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item>a {
+  text-decoration: none;
+}
+
+.nav-item>a.active {
+  text-decoration: underline;
+}
+
+.logo {
+  width: 100%;
+}
+
 section {
   display: grid;
   grid-template-columns: auto;
-  padding: 70px;
+  padding: 30px 70px;
 }
 
 section#shows {
-  background-color: grey;
+  background-color: #fcfaf9;
 }
 
 section#actors {
-  background-color: rgb(185, 44, 138);
+  background-color: #fcfaf9;
+  display: none;
 }
 
 section#actoras {
-  background-color: rgb(24, 179, 50);
+  background-color: #fcfaf9;
+  display: none;
 }
 
 .show-card,
@@ -40,7 +70,7 @@ section#actoras {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
 }
 
 .card-img {
@@ -71,6 +101,10 @@ section#actoras {
     display: grid;
     grid-template-columns: auto auto;
   }
+
+  .nav-item>a {
+    font-size: 1.5rem;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -78,11 +112,19 @@ section#actoras {
     display: grid;
     grid-template-columns: auto auto auto;
   }
+
+  .nav-item>a {
+    font-size: 2rem;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
   section {
     display: grid;
     grid-template-columns: auto auto auto auto;
+  }
+
+  .nav-item>a {
+    font-size: 2.5rem;
   }
 }
