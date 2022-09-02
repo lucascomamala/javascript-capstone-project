@@ -1,14 +1,61 @@
+import makeAPICall from './makeAPICall.js';
+
+import makeAPIPost from './makeAPIPost.js';
+
 const content = document.querySelector('main');
+
+const getComments = async (id) => {
+  const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/comments?item_id=${id}`;
+  return makeAPICall(url);
+};
+
+const displayComments = (id) => {
+  // const numbers = document.querySelectorAll('.likes-num');
+  getComments(id).then((comments) => {
+    let commentsCounter = comments.length;
+    if (commentsCounter === undefined) commentsCounter = 0;
+    console.log('Get ', commentsCounter, 'comments');
+
+    const commentsHTML = document.getElementById('popComments');
+    commentsHTML.children[0].innerHTML = `Comments (${commentsCounter})`;
+
+    commentsHTML.children[1].innerHTML = '';
+    if (commentsCounter !== 0) {
+      comments.forEach((read) => {
+        console.log('Get', read.username, read.comment);
+        commentsHTML.children[1].innerHTML
+         += `<p>${read.creation_date} ${read.username}: ${read.comment}</p>`;
+      });
+    } else {
+      // eslint-disable-next-line quotes
+      commentsHTML.children[1].innerHTML = `<p class='pop-message'>No comments yet</p>`;
+    }
+  });
+};
+
+const addNewComment = async (id, name, text) => {
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/comments';
+  const data = {
+    item_id: id,
+    username: name,
+    comment: text,
+  };
+  await makeAPIPost(url, data)
+    .then(() => {
+      console.log(id, 'ok-makeAPIPost');
+      displayComments(id);
+    });
+};
 
 // render Comments part of the Popup
 // eslint-disable-next-line no-unused-vars
-const renderComments = (id, array, persona) => {
+const renderComments = (idLarge) => {
   const section = document.getElementById('popup-section');
   section.innerHTML += `<div id="popComments">
-    <h2>Comments (2)</h2>
-    <div>No comments yet</div>
-    <p>Add a Comment</p>
-    <form onsubmit="" id="popCommentsFrom" method="post">
+    <h3></h3>
+    <div class='pop-textComments'></div>
+    <h4>Add a Comment</h4>
+    <form onsubmit="" id="popCommentsForm" method="post">
     <ul class="contact-input-form">
       <li>                                
         <label><input id="popfrmName" type="text" name="name" 
@@ -21,7 +68,7 @@ const renderComments = (id, array, persona) => {
          </label>
       </li>
       <li class="popCommentLi">
-        <button type="submit" class="popCommentBtn">
+        <button type="submit" id=${idLarge} class="popCommentBtn">
         Comment</button>            
       </li>                              
     </ul>    
@@ -81,18 +128,24 @@ const popupSectionActors = (actors) => {
 const createPopup = (id, array, person) => {
   // eslint-disable-next-line prefer-arrow-callback, func-names
   const myArray = array.filter(function (arr) { return arr.id === parseInt(id, 10); });
-
+  let IdLarge = '';
   if (myArray.length !== 1) return;
   if (person) {
+    IdLarge = 'actor-'.concat(myArray[0].id);
     popupSectionActors(myArray);
   } else {
+    IdLarge = 'show-'.concat(myArray[0].id);
     popupSectionShows(myArray);
   }
 
-  renderComments(id, array, person);
+  renderComments(IdLarge);
   document.getElementById('popup-section').style.display = 'block';
+
   // eslint-disable-next-line no-use-before-define
   loadListenerClosePopup();
+  // eslint-disable-next-line no-use-before-define
+  loadListenerCommentBtn();
+  displayComments(IdLarge);
 };
 
 const closePopup = () => {
@@ -103,4 +156,16 @@ const loadListenerClosePopup = () => {
   document.getElementById('popupClose').addEventListener('click', closePopup);
 };
 
-export { createPopup, loadListenerClosePopup };
+const loadListenerCommentBtn = () => {
+  document.getElementsByClassName('popCommentBtn')[0].addEventListener('click', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('popfrmName');
+    const text = document.getElementById('popfrmText');
+    if ((name.value !== '') && (text.value !== '')) {
+      addNewComment(e.target.id, name.value, text.value);
+      name.value = '';
+      text.value = '';
+    }
+  });
+};
+export default createPopup;
