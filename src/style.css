@@ -13,6 +13,7 @@
   list-style: none;
   align-items: center;
   justify-content: space-evenly;
+  padding: 0 2rem;
 }
 
 .nav-item {
@@ -23,6 +24,7 @@
 
 .nav-item>a {
   text-decoration: none;
+  letter-spacing: 0.2rem;
 }
 
 .nav-item>a.active {

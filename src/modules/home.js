@@ -34,7 +34,7 @@ const actorsSection = (actors) => {
             <span>X LIKES</span>
           </div>
         </div>
-        <button id="${actors[i].id}" class="modal-btn actors-modal">Comments</button>`;
+        <button id="${actors[i].id}" class="modal-btn actors-modal button-54">Comments</button>`;
     section.appendChild(card);
   }
   return section.outerHTML;
@@ -54,7 +54,7 @@ const actorasSection = (actoras) => {
             <span>X LIKES</span>
           </div>
         </div>
-        <button id="${actoras[i].id}" class="modal-btn actoras-modal" onClick="">Comments</button>`;
+        <button id="${actoras[i].id}" class="modal-btn actoras-modal button-54" onClick="">Comments</button>`;
     section.appendChild(card);
   }
   return section.outerHTML;
