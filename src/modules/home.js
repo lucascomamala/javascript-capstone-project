@@ -14,7 +14,7 @@ const showsSection = (shows) => {
             <span>X LIKES</span>
           </div>
         </div>
-        <button id="${shows[i].id}" class="modal-btn shows-modal" onClick="">Comments</button>`;
+        <button id="${shows[i].id}" class="modal-btn shows-modal button-54" onClick="">Comments</button>`;
     section.appendChild(card);
   }
   return section.outerHTML;
