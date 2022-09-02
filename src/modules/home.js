@@ -9,7 +9,7 @@ const showsSection = (shows) => {
   section.id = 'shows';
   for (let i = 0; i < shows.length; i += 1) {
     const card = document.createElement('div');
-    card.classList.add('actor-card');
+    card.classList.add('show-card');
     card.innerHTML = `<img class="card-img" src="${shows[i].image.medium}" alt="${shows[i].name} poster image">
         <div class="card-title">
           <h3>${shows[i].name}</h3>
@@ -18,7 +18,7 @@ const showsSection = (shows) => {
             <span id="show${shows[i].id}" class="likes-num">LIKES</span>
           </div>
         </div>
-        <button id="${shows[i].id}" class="modal-btn shows-modal" onClick="">Comments</button>`;
+        <button id="${shows[i].id}" class="modal-btn shows-modal button-54" onClick="">Comments</button>`;
     section.appendChild(card);
   }
   return section.outerHTML;
@@ -29,7 +29,7 @@ const actorsSection = (actors) => {
   section.id = 'actors';
   for (let i = 0; i < actors.length; i += 1) {
     const card = document.createElement('div');
-    card.classList.add('actora-card');
+    card.classList.add('actor-card');
     card.innerHTML = `<img class="card-img" src="${actors[i].image.medium}" alt="${actors[i].name} poster image">
         <div class="card-title">
           <h3>${actors[i].name}</h3>
@@ -38,7 +38,7 @@ const actorsSection = (actors) => {
             <span id="person${actors[i].id}" class="likes-num">LIKES</span>
           </div>
         </div>
-        <button id="${actors[i].id}" class="modal-btn actors-modal">Comments</button>`;
+        <button id="${actors[i].id}" class="modal-btn actors-modal button-54">Comments</button>`;
     section.appendChild(card);
   }
   return section.outerHTML;
@@ -49,7 +49,7 @@ const actorasSection = (actoras) => {
   section.id = 'actoras';
   for (let i = 0; i < actoras.length; i += 1) {
     const card = document.createElement('div');
-    card.classList.add('show-card');
+    card.classList.add('actora-card');
     card.innerHTML = `<img class="card-img" src="${actoras[i].image.medium}" alt="${actoras[i].name} poster image">
         <div class="card-title">
           <h3>${actoras[i].name}</h3>
@@ -58,7 +58,7 @@ const actorasSection = (actoras) => {
             <span id="person${actoras[i].id}" class="likes-num">LIKES</span>
           </div>
         </div>
-        <button id="${actoras[i].id}" class="modal-btn actoras-modal" onClick="">Comments</button>`;
+        <button id="${actoras[i].id}" class="modal-btn actoras-modal button-54" onClick="">Comments</button>`;
     section.appendChild(card);
   }
   return section.outerHTML;
