@@ -1,3 +1,7 @@
+import makeAPICall from './makeAPICall.js';
+import makeAPIPost from './makeAPIPost.js';
+import createPopup from './popups.js';
+
 const content = document.querySelector('main');
 
 const showsSection = (shows) => {
@@ -11,7 +15,7 @@ const showsSection = (shows) => {
           <h3>${shows[i].name}</h3>
           <div class="likes-container">
             <i class="fa-regular fa-heart"></i>
-            <span>X LIKES</span>
+            <span id="show${shows[i].id}" class="likes-num">LIKES</span>
           </div>
         </div>
         <button id="${shows[i].id}" class="modal-btn shows-modal button-54" onClick="">Comments</button>`;
@@ -31,7 +35,7 @@ const actorsSection = (actors) => {
           <h3>${actors[i].name}</h3>
           <div class="likes-container">
             <i class="fa-regular fa-heart"></i>
-            <span>X LIKES</span>
+            <span id="person${actors[i].id}" class="likes-num">LIKES</span>
           </div>
         </div>
         <button id="${actors[i].id}" class="modal-btn actors-modal button-54">Comments</button>`;
@@ -51,13 +55,44 @@ const actorasSection = (actoras) => {
           <h3>${actoras[i].name}</h3>
           <div class="likes-container">
             <i class="fa-regular fa-heart"></i>
-            <span>X LIKES</span>
+            <span id="person${actoras[i].id}" class="likes-num">LIKES</span>
           </div>
         </div>
         <button id="${actoras[i].id}" class="modal-btn actoras-modal button-54" onClick="">Comments</button>`;
     section.appendChild(card);
   }
   return section.outerHTML;
+};
+
+const getLikes = async () => {
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/likes';
+  return makeAPICall(url);
+};
+
+const displayLikes = () => {
+  const numbers = document.querySelectorAll('.likes-num');
+  getLikes().then((likes) => {
+    numbers.forEach((num) => {
+      const item = likes.find((like) => like.item_id === num.id);
+
+      if (item) {
+        num.innerHTML = `${item.likes} likes`;
+      } else {
+        num.innerHTML = '0 likes';
+      }
+    });
+  });
+};
+
+const addLike = async (id) => {
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/likes';
+  const data = {
+    item_id: id,
+  };
+  await makeAPIPost(url, data)
+    .then(() => {
+      displayLikes();
+    });
 };
 
 const heartsListeners = () => {
@@ -70,15 +105,25 @@ const heartsListeners = () => {
   });
   hearts.forEach((heart) => {
     heart.addEventListener('mouseout', () => {
+      if (heart.classList.contains('pressed')) return;
       heart.classList.add('fa-regular');
       heart.classList.remove('fa-solid');
     });
   });
+  hearts.forEach((heart) => {
+    heart.addEventListener('click', (e) => {
+      if (heart.classList.contains('pressed')) return;
+      heart.classList.add('pressed');
+      heart.classList.add('fa-solid');
+      const { id } = e.target.nextSibling.nextSibling;
+      addLike(id);
+    });
+  });
 };
 
-const createPopup = (id, array, persona) => {
-  console.log(id, array, persona);
-};
+// const createPopup = (id, array, persona) => {
+//   console.log(id, array, persona);
+// };
 
 const modalListeners = (shows, actors, actoras) => {
   const modalBtns = document.querySelectorAll('.modal-btn');
@@ -101,6 +146,7 @@ const renderHome = (shows, actors, actoras) => {
   content.insertAdjacentHTML('beforeend', actorasSection(actoras));
   heartsListeners();
   modalListeners(shows, actors, actoras);
+  displayLikes();
 };
 
 export default renderHome;
