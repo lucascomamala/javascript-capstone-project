@@ -8,7 +8,7 @@
 footer {
   background-color: #fcfaf9;
   padding: 2rem 1rem;
-  border-top: #000000 solid 1px;
+  border-top: #000 solid 1px;
 }
 
 .nav {
@@ -28,12 +28,12 @@ footer {
   justify-content: center;
 }
 
-.nav-item>a {
+.nav-item > a {
   text-decoration: none;
   letter-spacing: 0.2rem;
 }
 
-.nav-item>a.active {
+.nav-item > a.active {
   text-decoration: underline;
 }
 
@@ -101,7 +101,7 @@ section#actoras {
   cursor: pointer;
 }
 
-.likes-container>span {
+.likes-container > span {
   font-size: 10px;
 }
 
@@ -115,7 +115,7 @@ section#actoras {
   cursor: pointer;
   border: 3px solid;
   padding: 0.25em 0.5em;
-  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  box-shadow: 1px 1px 0 0, 2px 2px 0 0, 3px 3px 0 0, 4px 4px 0 0, 5px 5px 0 0;
   position: relative;
   user-select: none;
   -webkit-user-select: none;
@@ -123,7 +123,7 @@ section#actoras {
 }
 
 .button-54:active {
-  box-shadow: 0px 0px 0px 0px;
+  box-shadow: 0 0 0 0;
   top: 5px;
   left: 5px;
 }
@@ -134,13 +134,13 @@ section#actoras {
     grid-template-columns: auto auto;
   }
 
-  .nav-item>a {
+  .nav-item > a {
     font-size: 1.5rem;
   }
 
-    .button-54 {
-      padding: 0.25em 0.75em;
-    }
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -149,7 +149,7 @@ section#actoras {
     grid-template-columns: auto auto auto;
   }
 
-  .nav-item>a {
+  .nav-item > a {
     font-size: 2rem;
   }
 }
@@ -160,7 +160,7 @@ section#actoras {
     grid-template-columns: auto auto auto auto;
   }
 
-  .nav-item>a {
+  .nav-item > a {
     font-size: 2.5rem;
   }
 }
