@@ -135,10 +135,14 @@ section#actoras {
 }
 
 #popComments {
+  border: 1px solid grey;
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 5%;
+  padding-top: 3%;
+  margin: 3% auto;
+  max-width: 60vw;
+  justify-self: center;
 }
 
 #popComments ul {
@@ -150,10 +154,54 @@ section#actoras {
   gap: 10px;
 }
 
+#popCommentsForm {
+  padding-bottom: 2%;
+}
+
+.pop-textComments {
+  text-align: left;
+  margin: 0 20%;
+  padding: 2% 0;
+  overflow: auto;
+  max-height: 12vh;
+}
+
+.pop-textComments:hover {
+  max-height: 100vw;
+}
+
+.pop-textComments p {
+  padding-top: 1%;
+}
+
+.pop-message {
+  text-align: center;
+}
+
+.popCommentBtn {
+  height: 8%;
+  width: auto;
+}
+
+.popCommentBtn:hover {
+  background-color: black;
+  color: white;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 600;
+  padding-top: 3%;
+}
+
 .pop-summary {
   max-height: 10vw;
   overflow-y: auto;
   border: 1px solid rgb(226, 222, 222);
+}
+
+.pop-summary:hover {
+  max-height: 100vw;
 }
 
 @media only screen and (max-width: 767px) {
@@ -169,6 +217,7 @@ section#actoras {
   .pop-description {
     font-size: 14px;
     margin: auto 10%;
+    align-self: auto;
   }
 
   .pop-description h1 {
@@ -182,5 +231,31 @@ section#actoras {
 
   .pop-summary {
     max-height: 30vw;
+  }
+
+  .pop-textComments {
+    font-size: 14px;
+  }
+
+  .pop-textComments p {
+    padding-top: 4%;
+  }
+
+  textarea {
+    width: 70%;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  h4 {
+    padding-top: 12%;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .pop-message {
+    font-size: 12px;
   }
 }
