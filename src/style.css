@@ -5,6 +5,12 @@
   padding: 0;
 }
 
+footer {
+  background-color: #fcfaf9;
+  padding: 2rem 1rem;
+  border-top: #000000 solid 1px;
+}
+
 .nav {
   background-color: #fcfaf9;
   width: 100%;
