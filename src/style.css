@@ -182,6 +182,7 @@ section#actoras {
   height: auto;
   max-height: 90vh;
   overflow: auto;
+  z-index: 100;
 }
 
 #popupClose {
