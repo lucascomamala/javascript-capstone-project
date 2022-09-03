@@ -11,7 +11,7 @@
 
 ## Video preview
 
-[Video Presentation](https://drive.google.com/file/d/122AsXE1nMq4ckSANFP-M0jwXNrOFpzxv/view?usp=sharing)
+[Video Presentation](https://drive.google.com/file/d/1_O53Pl6ElAJnO5hH5uzInzRjp4cVyfJx/view?usp=sharing)
 
 ## GENERAL REQUIREMENTS
 
