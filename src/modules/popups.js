@@ -9,27 +9,36 @@ const getComments = async (id) => {
   return makeAPICall(url);
 };
 
+const getCommentCount = () => {
+  let count = document.querySelectorAll('.comment').length;
+  if (count === undefined) count = 0;
+  return count;
+};
+
+// shows the Comments Counter
+const displayCountComments = () => {
+  const numComments = getCommentCount();
+  const commentsHTML = document.getElementById('popComments');
+  commentsHTML.children[0].innerHTML = `Comments (${numComments})`;
+};
+
 const displayComments = (id) => {
-  // const numbers = document.querySelectorAll('.likes-num');
   getComments(id).then((comments) => {
     let commentsCounter = comments.length;
     if (commentsCounter === undefined) commentsCounter = 0;
-    console.log('Get ', commentsCounter, 'comments');
 
     const commentsHTML = document.getElementById('popComments');
-    commentsHTML.children[0].innerHTML = `Comments (${commentsCounter})`;
-
     commentsHTML.children[1].innerHTML = '';
     if (commentsCounter !== 0) {
       comments.forEach((read) => {
-        console.log('Get', read.username, read.comment);
         commentsHTML.children[1].innerHTML
-         += `<p>${read.creation_date} ${read.username}: ${read.comment}</p>`;
+         += `<p class="comment">${read.creation_date} ${read.username}: ${read.comment}</p>`;
       });
     } else {
       // eslint-disable-next-line quotes
       commentsHTML.children[1].innerHTML = `<p class='pop-message'>No comments yet</p>`;
     }
+    displayCountComments();
   });
 };
 
@@ -42,7 +51,6 @@ const addNewComment = async (id, name, text) => {
   };
   await makeAPIPost(url, data)
     .then(() => {
-      console.log(id, 'ok-makeAPIPost');
       displayComments(id);
     });
 };
@@ -168,4 +176,5 @@ const loadListenerCommentBtn = () => {
     }
   });
 };
-export default createPopup;
+
+export { createPopup, getCommentCount };

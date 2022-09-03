@@ -1,6 +1,6 @@
 import makeAPICall from './makeAPICall.js';
 import makeAPIPost from './makeAPIPost.js';
-import createPopup from './popups.js';
+import { createPopup } from './popups.js';
 
 const content = document.querySelector('main');
 
