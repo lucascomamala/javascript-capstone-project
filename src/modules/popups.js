@@ -9,17 +9,17 @@ const getComments = async (id) => {
   return makeAPICall(url);
 };
 
+const getCommentCount = () => {
+  let count = document.querySelectorAll('.comment').length;
+  if (count === undefined) count = 0;
+  return count;
+};
+
 // shows the Comments Counter
 const displayCountComments = () => {
   const numComments = getCommentCount();
   const commentsHTML = document.getElementById('popComments');
   commentsHTML.children[0].innerHTML = `Comments (${numComments})`;
-};
-
-const getCommentCount = () => {
-  let count = document.querySelectorAll('.comment').length;
-  if (count === undefined) count = 0;
-  return count;
 };
 
 const displayComments = (id) => {
