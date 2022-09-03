@@ -7,11 +7,11 @@
 
 ## Live Demo
 
-https://lucascomamala.github.io/javascript-capstone-project/
+[Live Demo Link](https://lucascomamala.github.io/javascript-capstone-project/)
 
 ## Video preview
 
-https://drive.google.com/file/d/1oL_YLiU6AhRZP4Yt-RLW8nrFCt7ifmbL/view?usp=sharing
+[Video Presentation](https://drive.google.com/file/d/122AsXE1nMq4ckSANFP-M0jwXNrOFpzxv/view?usp=sharing)
 
 ## GENERAL REQUIREMENTS
 
