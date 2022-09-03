@@ -84,15 +84,18 @@ const displayLikes = () => {
   });
 };
 
-const addLike = async (id) => {
+const increaseLikeDisplay = (span) => {
+  const num = parseInt(span.innerHTML, 10);
+  span.innerHTML = `${num + 1} likes`;
+};
+
+const addLike = async (id, span) => {
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/58F4JzqWcLrmImL87g5B/likes';
   const data = {
     item_id: id,
   };
-  await makeAPIPost(url, data)
-    .then(() => {
-      displayLikes();
-    });
+  increaseLikeDisplay(span);
+  await makeAPIPost(url, data);
 };
 
 const heartsListeners = () => {
@@ -116,7 +119,7 @@ const heartsListeners = () => {
       heart.classList.add('pressed');
       heart.classList.add('fa-solid');
       const { id } = e.target.nextSibling.nextSibling;
-      addLike(id);
+      addLike(id, e.target.nextSibling.nextSibling);
     });
   });
 };
